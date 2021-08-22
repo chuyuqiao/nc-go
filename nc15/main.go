@@ -9,29 +9,24 @@ type TreeNode struct {
 }
 
 func main() {
-	fmt.Println(Print(&TreeNode{
+	fmt.Println(levelOrder(&TreeNode{
 		Val: 1,
 		Left: &TreeNode{
-			Val:   2,
-			Left:  nil,
-			Right: nil,
+			Val: 2,
 		},
 		Right: &TreeNode{
-			Val:   3,
-			Left:  nil,
-			Right: nil,
+			Val: 3,
 		},
 	}))
 }
 
-func Print(pRoot *TreeNode) [][]int {
+func levelOrder(root *TreeNode) [][]int {
 	// write code here
-	if pRoot == nil {
+	if root == nil {
 		return nil
 	}
-	q := []*TreeNode{pRoot}
+	q := []*TreeNode{root}
 	var res [][]int
-
 	for len(q) > 0 {
 		n := len(q)
 		var level []int
@@ -47,16 +42,6 @@ func Print(pRoot *TreeNode) [][]int {
 			}
 		}
 		res = append(res, level)
-	}
-
-	n := len(res)
-	for i := 0; i < n; i++ {
-		if i%2 == 1 {
-			in := len(res[i])
-			for j := 0; j < in/2; j++ {
-				res[i][j], res[i][in-j-1] = res[i][in-j-1], res[i][j]
-			}
-		}
 	}
 	return res
 }
