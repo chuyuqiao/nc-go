@@ -2,12 +2,16 @@ package main
 
 import (
 	"fmt"
-
-	lib "leetcode-go/lib"
 )
 
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
 func main() {
-	root := lib.TreeNode{Val: 1, Left: &lib.TreeNode{Val: 0}}
+	root := TreeNode{Val: 1, Left: &TreeNode{Val: 0}}
 	fmt.Println(sumNumbers(&root))
 }
 
@@ -16,14 +20,14 @@ func main() {
  * @param root TreeNode类
  * @return int整型
  */
-func sumNumbers(root *lib.TreeNode) int {
+func sumNumbers(root *TreeNode) int {
 	// write code here
 	if root == nil {
 		return 0
 	}
 
 	sum := 0
-	q := []*lib.TreeNode{root}
+	q := []*TreeNode{root}
 	r := []int{root.Val}
 	for len(q) > 0 {
 		node := q[0]

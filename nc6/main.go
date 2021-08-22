@@ -3,28 +3,32 @@ package main
 import (
 	"fmt"
 	"math"
-
-	"leetcode-go/lib"
 )
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
 func main() {
 	// write code here
-	root := &lib.TreeNode{
+	root := &TreeNode{
 		Val: -1,
-		Left: &lib.TreeNode{
+		Left: &TreeNode{
 			Val: 1,
-			Left: &lib.TreeNode{
+			Left: &TreeNode{
 				Val: 2,
 			},
-			Right: &lib.TreeNode{
+			Right: &TreeNode{
 				Val: -3,
 			},
 		},
 	}
 
 	maxSum := math.MinInt32
-	var maxGain func(*lib.TreeNode) int
-	maxGain = func(node *lib.TreeNode) int {
+	var maxGain func(*TreeNode) int
+	maxGain = func(node *TreeNode) int {
 		if node == nil {
 			return 0
 		}
